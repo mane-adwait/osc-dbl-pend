@@ -21,6 +21,8 @@ syms t % Time.
 syms th1(t) th2(t) % Joint angles.
 
 q = [th1; th2]; % Vector of generalized coordinates.
+dq = diff(q,t);
+ddq = diff(dq,t);
 
 % Forward kinematics: center positions of each body.
 r1 = [0.5*p.L1*cos(th1); 0.5*p.L1*sin(th1)]
@@ -39,3 +41,10 @@ ddr2 = diff(dr2,t)
 T = 0.5*p.m1*dr1.'*dr1 + 0.5*p.m2*dr2.'*dr2
 % Potential energy: m*g*h
 V = p.m1*p.g*[0 1]*r1 + p.m2*p.g*[0 1]*r2
+
+% Lagrangian
+L = T- V
+
+% Euler-Lagrange equation
+dL_dq = diff(L,q)
+dL_ddq = gradient(L,dq)
