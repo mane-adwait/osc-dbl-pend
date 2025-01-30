@@ -19,10 +19,13 @@ p = getParams(); % Store the parameters.
 
 syms t % Time.
 syms th1(t) th2(t) % Joint angles.
+syms tau1 tau2 % Torques.
 
 q = [th1; th2]; % Vector of generalized coordinates.
 dq = diff(q,t);
 ddq = diff(dq,t);
+
+tau = [tau1; tau2]; % Vector of non-conservative forces.
 
 % Forward kinematics: center positions of each body.
 r1 = [0.5*p.L1*cos(th1); 0.5*p.L1*sin(th1)]
@@ -52,3 +55,10 @@ dL_ddq = gradient(L,dq)
 d_dt_dL_ddq = diff(dL_ddq,t)
 
 EL_LHS = d_dt_dL_ddq - dL_dq;
+
+B = [1 -1; 0 1]; % Input matrix.
+EL_RHS = B*tau
+
+
+% Get our equations of motion into the manipulator form.
+% M*ddq = f
