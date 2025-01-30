@@ -45,6 +45,10 @@ V = p.m1*p.g*[0 1]*r1 + p.m2*p.g*[0 1]*r2
 % Lagrangian
 L = T- V
 
+
 % Euler-Lagrange equation
 dL_dq = diff(L,q)
 dL_ddq = gradient(L,dq)
+d_dt_dL_ddq = diff(dL_ddq,t)
+
+EL_LHS = d_dt_dL_ddq - dL_dq;
