@@ -1,4 +1,4 @@
-clc; clear all
+clc; clear all;
 
 fprintf(['Takeaway: size and numel work for symbolic variables (type sym), ' ...
     '\n not symbolic functions (type symfun) \n'])

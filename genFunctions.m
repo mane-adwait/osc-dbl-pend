@@ -59,6 +59,19 @@ EL_LHS = d_dt_dL_ddq - dL_dq;
 B = [1 -1; 0 1]; % Input matrix.
 EL_RHS = B*tau
 
+% Put everything on the LHS.
+EL = EL_LHS - EL_RHS
 
-% Get our equations of motion into the manipulator form.
-% M*ddq = f
+% Remove time dependence. Substitute symbolic functions with symbolic variables.
+
+syms th1_ th2_ dth1_ dth2_ ddth1_ ddth2_ q_ dq_ ddq_
+
+EL_ = subs(EL, diff(th1,t,t), ddth1_);
+EL_ = subs(EL_, diff(th1,t), dth1_);
+EL_ = subs(EL_, th1, th1_);
+
+EL_ = subs(EL_, diff(th2,t,t), ddth2_);
+EL_ = subs(EL_, diff(th2,t), dth2_);
+EL_ = subs(EL_, th2, th2_)
+
+% Get the equations of motion into the manipulator form, M*ddq = f.
