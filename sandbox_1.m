@@ -1,10 +1,12 @@
 clc; clear all
 
 fprintf(['Takeaway: size and numel work for symbolic variables (type sym), ' ...
-    '\n not symbolic functions (type symfun) \n\n'])
-
-fprintf(['Use matrix mutiplication for indexing, ' ...
-    'e.g [1 0]*d to index the first value of d, [0 1]*d to index the second'])
+    '\n not symbolic functions (type symfun) \n'])
+fprintf('Workaround: Hard code the size. \n')
+fprintf(['Indexing: Use matrix mutiplication for indexing, \n ' ...
+    'e.g [1 0]*d to index the first value of d, ' ...
+    '[0 1]*d to index the second.'])
+fprintf('\n\n')
 
 syms a;
 b = [a; 2*a];
