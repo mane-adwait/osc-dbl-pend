@@ -60,18 +60,20 @@ B = [1 -1; 0 1]; % Input matrix.
 EL_RHS = B*tau
 
 % Put everything on the LHS.
-EL = EL_LHS - EL_RHS
+EL = EL_LHS - EL_RHS;
 
 % Remove time dependence. Substitute symbolic functions with symbolic variables.
-
 syms th1_ th2_ dth1_ dth2_ ddth1_ ddth2_ q_ dq_ ddq_
 
-EL_ = subs(EL, diff(th1,t,t), ddth1_);
-EL_ = subs(EL_, diff(th1,t), dth1_);
-EL_ = subs(EL_, th1, th1_);
+EL_temp = subs(EL, diff(th1,t,t), ddth1_);
+EL_temp = subs(EL_temp, diff(th1,t), dth1_);
+EL_temp = subs(EL_temp, th1, th1_);
 
-EL_ = subs(EL_, diff(th2,t,t), ddth2_);
-EL_ = subs(EL_, diff(th2,t), dth2_);
-EL_ = subs(EL_, th2, th2_)
+EL_temp = subs(EL_temp, diff(th2,t,t), ddth2_);
+EL_temp = subs(EL_temp, diff(th2,t), dth2_);
+EL_temp = subs(EL_temp, th2, th2_);
 
+% EL_temp is still of type symfun, even though we removed the time
+% dependence of the terms via substitution. So we create EL_ below.
+EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp; EL_
 % Get the equations of motion into the manipulator form, M*ddq = f.
