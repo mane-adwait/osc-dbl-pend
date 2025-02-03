@@ -75,5 +75,5 @@ EL_temp = subs(EL_temp, th2, th2_);
 
 % EL_temp is still of type symfun, even though we removed the time
 % dependence of the terms via substitution. So we create EL_ below.
-EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp; EL_
+EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp; disp(char(EL_))
 % Get the equations of motion into the manipulator form, M*ddq = f.
