@@ -86,4 +86,4 @@ disp(['EL_ = ' newline char([1 0] * EL_) newline char([0 1] * EL_)])
 
 % ------ SANDBOX -------
 % fprintf('EL_ = \n%s\n%s\n', char([1 0]*EL_), char([0 1]*EL_));
-% disp(['EL_ = \n' char(EL_)])
+% disp(['EL_ = \n' char(EL_)]) % Does not work.
