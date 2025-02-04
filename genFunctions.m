@@ -65,6 +65,10 @@ EL = EL_LHS - EL_RHS;
 % Remove time dependence. Substitute symbolic functions with symbolic variables.
 syms th1_ th2_ dth1_ dth2_ ddth1_ ddth2_ q_ dq_ ddq_
 
+q_ = [th1_; th2_]
+dq_ = [dth1_; dth2_]
+ddq_ = [ddth1_; ddth2_]
+
 EL_temp = subs(EL, diff(th1,t,t), ddth1_);
 EL_temp = subs(EL_temp, diff(th1,t), dth1_);
 EL_temp = subs(EL_temp, th1, th1_);
@@ -77,6 +81,10 @@ EL_temp = subs(EL_temp, th2, th2_);
 % dependence of the terms via substitution. So we create EL_ below.
 EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp; 
 disp(['EL_ = ' newline char([1 0] * EL_) newline char([0 1] * EL_)])
+
+% Take the Jacobian wrt ddq_ to get M.
+M = jacobian(EL_,ddq_) % Inertia matrix.
+f = 
 
 % Get the equations of motion into the manipulator form, M*ddq = f.
 
