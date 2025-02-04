@@ -82,12 +82,13 @@ EL_temp = subs(EL_temp, th2, th2_);
 EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp; 
 disp(['EL_ = ' newline char([1 0] * EL_) newline char([0 1] * EL_)])
 
-% Take the Jacobian wrt ddq_ to get M.
-M = jacobian(EL_,ddq_) % Inertia matrix.
-f = 
-
 % Get the equations of motion into the manipulator form, M*ddq = f.
+M = jacobian(EL_,ddq_) % Inertia matrix.
+f = -subs(EL_, ddq_, [0;0])
 
+% Export these functions.
+matlabFunction(M,'File','Mfunc','Vars',{q_,dq_,tau})
+matlabFunction(f,'File','ffunc','Vars',{q_,dq_,tau})
 
 % ------ APPENDIX -------
 % disp(['var = ' newline char([1 0] * var) newline char([0 1] * var)])
