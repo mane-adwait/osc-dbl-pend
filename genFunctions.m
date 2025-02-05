@@ -27,6 +27,12 @@ ddq = diff(dq,t);
 
 tau = [tau1; tau2]; % Vector of non-conservative forces.
 
+% Define the task space.
+y = [p.L1*cos(th1) + p.L2*cos(th1+th2); 
+    p.L1*sin(th1) + p.L2*sin(th1+th2)];
+dy = diff(y,t);
+ddy = diff(dy,t);
+
 % Forward kinematics: center positions of each body.
 r1 = [0.5*p.L1*cos(th1); 0.5*p.L1*sin(th1)]
 r2 = [p.L1*cos(th1) + 0.5*p.L2*cos(th1+th2); 
@@ -57,7 +63,7 @@ d_dt_dL_ddq = diff(dL_ddq,t)
 EL_LHS = d_dt_dL_ddq - dL_dq;
 
 B = [1 -1; 0 1]; % Input matrix.
-EL_RHS = B*tau
+EL_RHS = B*tau;
 
 % Put everything on the LHS.
 EL = EL_LHS - EL_RHS;
