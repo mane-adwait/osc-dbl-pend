@@ -88,13 +88,25 @@ EL_temp = subs(EL_temp, th2, th2_);
 EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp; 
 disp(['EL_ = ' newline char([1 0] * EL_) newline char([0 1] * EL_)])
 
+% Repeat for the task space, y.
+y_temp = subs(y, diff(th1,t,t), ddth1_);
+y_temp = subs(y_temp, diff(th1,t), dth1_);
+y_temp = subs(y_temp, th1, th1_);
+
+y_temp = subs(y_temp, diff(th2,t,t), ddth2_);
+y_temp = subs(y_temp, diff(th2,t), dth2_);
+y_temp = subs(y_temp, th2, th2_);
+
+y_(1,1) = [1 0]*y_temp; y_(2,1) = [0 1]*y_temp; 
+disp(['y_ = ' newline char([1 0] * y_) newline char([0 1] * y_)])
+
 % Get the equations of motion into the manipulator form, M*ddq = f.
-M = jacobian(EL_,ddq_) % Inertia matrix.
-f = -subs(EL_, ddq_, [0;0])
+M = jacobian(EL_,ddq_); % Inertia matrix.
+f = -subs(EL_, ddq_, [0;0]);
 
 % Export these functions.
-matlabFunction(M,'File','Mfunc','Vars',{q_,dq_,tau})
-matlabFunction(f,'File','ffunc','Vars',{q_,dq_,tau})
+matlabFunction(M,'File','Mfunc','Vars',{q_,dq_,tau});
+matlabFunction(f,'File','ffunc','Vars',{q_,dq_,tau});
 
 % ------ APPENDIX -------
 % disp(['var = ' newline char([1 0] * var) newline char([0 1] * var)])
