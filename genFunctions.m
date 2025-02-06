@@ -27,7 +27,8 @@ ddq = diff(dq,t);
 
 tau = [tau1; tau2]; % Vector of non-conservative forces.
 
-% Define the task space.
+% Forward kinematics to define the task space: center position of the
+% end-effector.
 y = [p.L1*cos(th1) + p.L2*cos(th1+th2); 
     p.L1*sin(th1) + p.L2*sin(th1+th2)];
 dy = diff(y,t);
@@ -38,11 +39,11 @@ r1 = [0.5*p.L1*cos(th1); 0.5*p.L1*sin(th1)];
 r2 = [p.L1*cos(th1) + 0.5*p.L2*cos(th1+th2); 
     p.L1*sin(th1) + 0.5*p.L2*sin(th1+th2)];
 
-% Velocities.
+% Velocities of body centers.
 dr1 = diff(r1,t);
 dr2 = diff(r2,t);
 
-% Accelerations.
+% Accelerations of body centers.
 ddr1 = diff(dr1,t);
 ddr2 = diff(dr2,t);
 
