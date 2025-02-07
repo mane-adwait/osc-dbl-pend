@@ -19,7 +19,7 @@ p = getParams(); % Store the parameters.
 
 syms t % Time.
 syms th1(t) th2(t) % Joint angles.
-syms tau1 tau2 % Torques.
+syms tau1 tau2 % Input torques.
 
 q = [th1; th2]; % Vector of generalized coordinates.
 dq = diff(q,t);
