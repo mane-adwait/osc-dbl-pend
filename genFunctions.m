@@ -76,7 +76,9 @@ q_ = [th1_; th2_]
 dq_ = [dth1_; dth2_]
 ddq_ = [ddth1_; ddth2_]
 
-EL_temp = subs(EL, diff(th1,t,t), ddth1_);
+EL_temp = EL; % Create an 'intermediary' for the substitutions.
+
+EL_temp = subs(EL_temp, diff(th1,t,t), ddth1_);
 EL_temp = subs(EL_temp, diff(th1,t), dth1_);
 EL_temp = subs(EL_temp, th1, th1_);
 
@@ -90,13 +92,31 @@ EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp;
 disp(['EL_ = ' newline char([1 0] * EL_) newline char([0 1] * EL_) newline])
 
 % Repeat for the task space position, velocity, and acceleration.
-ddy_temp = subs(ddy, diff(th1,t,t), ddth1_);
+y_temp = y; dy_temp = dy; ddy_temp = ddy; % Create the 'intermediaries' for the substitutions.
+
+y_temp = subs(y_temp,th1,th1_);
+
+y_temp = subs(y_temp,th2,th2_);
+
+dy_temp = subs(dy_temp, diff(th1,t), dth1_);
+dy_temp = subs(dy_temp, th1, th1_);
+
+dy_temp = subs(dy_temp, diff(th2,t), dth2_);
+dy_temp = subs(dy_temp, th2, th2_);
+
+ddy_temp = subs(ddy_temp, diff(th1,t,t), ddth1_);
 ddy_temp = subs(ddy_temp, diff(th1,t), dth1_);
 ddy_temp = subs(ddy_temp, th1, th1_);
 
 ddy_temp = subs(ddy_temp, diff(th2,t,t), ddth2_);
 ddy_temp = subs(ddy_temp, diff(th2,t), dth2_);
 ddy_temp = subs(ddy_temp, th2, th2_);
+
+y_(1,1) = [1 0]*y_temp; y_(2,1) = [0 1]*y_temp;
+disp(['y_ = ' newline char([1 0]*y_) newline char([0 1]*y_) newline])
+
+dy_(1,1) = [1 0]*dy_temp; dy_(2,1) = [0 1]*dy_temp;
+disp(['dy_ = ' newline char([1 0]*dy_) newline char([0 1]*dy_) newline])
 
 ddy_(1,1) = [1 0]*ddy_temp; ddy_(2,1) = [0 1]*ddy_temp; 
 disp(['ddy_ = ' newline char([1 0] * ddy_) newline char([0 1] * ddy_) newline])
