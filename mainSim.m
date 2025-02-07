@@ -10,6 +10,7 @@ dt = 0.01; % Sampling time (s). The state is sampled and the QP is run once each
 % Control rate = 1/dt (Hz).
 t_vector = t_span(1):dt:t_span(2);
 
+% State: x = [th1; dth1; th2; dth2]
 x0 = [-pi/2; 0; 0.1; 0]; % Initial state.
 x0_current = x0;
 
@@ -17,7 +18,9 @@ x0_current = x0;
 for iter = 1:numel(t_vector)-1
     sim_t_span = [t_vector(iter) t_vector(iter+1)];
 
-    % State: x = [th1; dth1; th2; dth2]
     [tout, xout] = ode45(odefun, sim_t_span, x0_current) ;
+end
 
 plot(tout,xout(:,1)); xlabel('Time (s)'); ylabel('Angle (rad)');
+
+% Resume video at 28:00.
