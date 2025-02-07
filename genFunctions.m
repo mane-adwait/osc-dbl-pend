@@ -125,7 +125,7 @@ disp(['ddy_ = ' newline char([1 0] * ddy_) newline char([0 1] * ddy_) newline])
 M = jacobian(EL_,ddq_); % Inertia matrix.
 f = -subs(EL_, ddq_, [0;0]);
 
-% Export these functions.
+% Export the dynamics functions.
 matlabFunction(M,'File','Mfunc','Vars',{q_,dq_,tau});
 matlabFunction(f,'File','ffunc','Vars',{q_,dq_,tau});
 
