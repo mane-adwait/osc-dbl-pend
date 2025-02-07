@@ -22,8 +22,8 @@ syms th1(t) th2(t) % Joint angles.
 syms tau1 tau2 % Input torques.
 
 q = [th1; th2]; % Vector of generalized coordinates.
-dq = diff(q,t);
-ddq = diff(dq,t);
+dq = diff(q,t); % Velocities.
+ddq = diff(dq,t); % Accelerations.
 
 tau = [tau1; tau2]; % Vector of non-conservative forces.
 
