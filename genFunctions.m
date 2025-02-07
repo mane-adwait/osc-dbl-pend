@@ -129,6 +129,11 @@ f = -subs(EL_, ddq_, [0;0]);
 matlabFunction(M,'File','Mfunc','Vars',{q_,dq_,tau});
 matlabFunction(f,'File','ffunc','Vars',{q_,dq_,tau});
 
+% Export the task space functions.
+matlabFunction(y_,'File','yfunc','Vars',{q_});
+matlabFunction(dy_,'File','dyfunc','Vars',{q_,dq_});
+matlabFunction(ddy_,'File','ddyfunc','Vars',{q_,dq_,ddq_});
+
 % ------ APPENDIX -------
 % disp(['var = ' newline char([1 0] * var) newline char([0 1] * var)])
 
