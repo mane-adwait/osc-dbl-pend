@@ -87,9 +87,9 @@ EL_temp = subs(EL_temp, th2, th2_);
 % EL_temp is still of type symfun, even though we removed the time
 % dependence of the terms via substitution. So we create EL_ below.
 EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp; 
-disp(['EL_ = ' newline char([1 0] * EL_) newline char([0 1] * EL_)])
+disp(['EL_ = ' newline char([1 0] * EL_) newline char([0 1] * EL_) newline])
 
-% Repeat for the task space acceleration, ddy.
+% Repeat for the task space position, velocity, and acceleration.
 ddy_temp = subs(ddy, diff(th1,t,t), ddth1_);
 ddy_temp = subs(ddy_temp, diff(th1,t), dth1_);
 ddy_temp = subs(ddy_temp, th1, th1_);
@@ -99,7 +99,7 @@ ddy_temp = subs(ddy_temp, diff(th2,t), dth2_);
 ddy_temp = subs(ddy_temp, th2, th2_);
 
 ddy_(1,1) = [1 0]*ddy_temp; ddy_(2,1) = [0 1]*ddy_temp; 
-disp(['y_ = ' newline char([1 0] * ddy_) newline char([0 1] * ddy_)])
+disp(['ddy_ = ' newline char([1 0] * ddy_) newline char([0 1] * ddy_) newline])
 
 % Get the equations of motion into the manipulator form, M*ddq = f.
 M = jacobian(EL_,ddq_); % Inertia matrix.
