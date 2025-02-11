@@ -3,8 +3,6 @@
 
 clc; clear; close all;
 
-odefun = @(t,x) dynamics(t,x,[0;0]);
-
 t_span = [0 5]; % Total duration (s).
 % Control timestep:
 % At the start of each interval, the state is sampled, the QP is run, and 
@@ -24,8 +22,15 @@ t_store = []; x_store = [];
 for iter = 1:numel(t_vector)-1
     sim_t_span = [t_vector(iter) t_vector(iter+1)];
     
-    % We need to compute the control input and apply to the dynamics 
+    % Unpack the state to measure q and dq.
+    q = [x0_current(1); x0_current(3)]; dq = [x0_current(2); x0_current(4)];
+
+    % Define the desired acceleration in the task space.
+    ddy_des = Kp*(y_des-yfunc(q)) + Kd(dy_des-dyfunc(q,dq));
+    
+    % We need to compute the control input and apply it to the dynamics 
     % at each loop iteration.
+    odefun = @(t,x) dynamics(t,x,[0;0]);
 
     [tout, xout] = ode45(odefun, sim_t_span, x0_current) ;
     x0_current = xout(end,:).'; 
