@@ -15,7 +15,9 @@ t_vector = t_span(1):dt:t_span(2);
 x0 = [-pi/2; 0; 0.1; 0]; % Initial state.
 x0_current = x0;
 
-% Store the time and state output.
+% Controller gains.
+
+% Initialize variables to store the time and state outputs.
 t_store = []; x_store = [];
 
 % Simulation loop.
@@ -42,4 +44,4 @@ end
 
 plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
 
-% Resume video at ??.
+% Resume video at 38:30.
