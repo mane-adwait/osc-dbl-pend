@@ -24,9 +24,13 @@ for iter = 1:numel(t_vector)-1
     sim_t_span = [t_vector(iter) t_vector(iter+1)];
 
     [tout, xout] = ode45(odefun, sim_t_span, x0_current) ;
-    x0_current = xout(end,:).'; % I think this should be the last column. 
+    x0_current = xout(end,:).'; 
+    
+    % Append the results to the previous results.
+    t_store = [t_store tout.'];
+    x_store = [x_store x_store.'];
 end
 
-plot(tout,xout(:,1)); xlabel('Time (s)'); ylabel('Angle (rad)');
+plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
 
-% Resume video at 28:00.
+% Resume video at ??.
