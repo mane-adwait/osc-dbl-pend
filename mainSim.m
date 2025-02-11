@@ -6,7 +6,7 @@ clc; clear; close all;
 odefun = @(t,x) dynamics(t,x,[0;0]);
 
 t_span = [0 1]; % Total duration (s).
-dt = 0.1; % Sampling time (s). The state is sampled and the QP is run once each interval.
+dt = 0.1; % Sampling time interval (s). The state is sampled and the QP is run once each interval.
 % Control rate = 1/dt (Hz).
 t_vector = t_span(1):dt:t_span(2);
 x_vector = zeros(4,numel(t_vector));
