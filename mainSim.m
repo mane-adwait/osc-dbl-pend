@@ -4,11 +4,10 @@
 clc; clear; close all;
 
 t_span = [0 5]; % Total duration (s).
-% Control timestep:
-% At the start of each interval, the state is sampled, the QP is run, and 
-% the control torque is computed.
-dt = 0.01; % Sampling time interval (s). 
-% Control rate = 1/dt (Hz).
+% Control timestep: At each control timestep, the state is sampled, 
+% the QP is run, and the control input is computed.
+dt = 0.01; % Control timestep (s).
+% Control frequency = 1/dt (Hz).
 t_vector = t_span(1):dt:t_span(2);
 
 % State: x = [th1; dth1; th2; dth2]
