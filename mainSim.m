@@ -24,6 +24,10 @@ for iter = 1:numel(t_vector)-1
 
     [t_iter_out, x_iter_out] = ode45(odefun, sim_t_span, x_out(:,end) ) ;
     
+    % Take the transpose so time goes from left to right.
+    t_iter_out = t_iter_out.';
+    x_iter_out = x_iter_out.';
+
     t_out = [t_out t_iter_out(2:end)];
     x_out = [x_out x_iter_out(:,2:end)];
 
@@ -32,4 +36,4 @@ for iter = 1:numel(t_vector)-1
     % vq = interp1(x,v,xq)
 end
 
-plot(t_out,x_out(:,1)); xlabel('Time (s)'); ylabel('Angle (rad)');
+plot(t_out,x_out(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
