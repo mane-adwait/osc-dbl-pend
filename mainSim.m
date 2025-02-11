@@ -1,5 +1,5 @@
 % mainSim.m
-% Simulate the uncontrolled dynamics.
+% Simulate the controlled system.
 
 clc; clear; close all;
 
