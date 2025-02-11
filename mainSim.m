@@ -18,18 +18,18 @@ x_out = [-pi/2; 0; 0.1; 0]; % Initial state.
 % x_vector = zeros(4,numel(t_vector));
 % x_vector(:,1) = [-pi/2; 0; 0.1; 0]; % State: x = [th1; dth1; th2; dth2].
 
-
 % Simulation loop.
 for iter = 1:numel(t_vector)-1
     sim_t_span = [t_vector(iter) t_vector(iter+1)];
 
     [t_iter_out, x_iter_out] = ode45(odefun, sim_t_span, x_vector(:,iter) ) ;
     
-    
+    t_out = [t_out t_iter_out];
+    x_out = [x_out x_iter_out];
 
     % Interpolate tout and xout, and replace the preallocated x_vector with
     % the interpolated values.
     % vq = interp1(x,v,xq)
 end
 
-plot(tout,xout(:,1)); xlabel('Time (s)'); ylabel('Angle (rad)');
+plot(t_out,x_out(:,1)); xlabel('Time (s)'); ylabel('Angle (rad)');
