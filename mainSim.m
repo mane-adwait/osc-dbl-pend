@@ -20,6 +20,7 @@ for iter = 1:numel(t_vector)-1
     
     % Interpolate tout and xout, and replace the preallocated x_vector with
     % the interpolated values.
+    % vq = interp1(x,v,xq)
 end
 
 plot(tout,xout(:,1)); xlabel('Time (s)'); ylabel('Angle (rad)');
