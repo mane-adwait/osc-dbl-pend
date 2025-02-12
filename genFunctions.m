@@ -130,6 +130,10 @@ f = -subs(EL_, ddq_, [0;0]);
 w = [tau; ddq_];
 % Cost function.
 ddy_des = sym('ddy_des',[2 1]);
+cost = ddy_des - ddy_ ; cost = sum(cost.^2); % Scalar cost.
+
+% Equality constraints.
+Ceq = M*ddq_-f;
 
 % Export the dynamics functions.
 matlabFunction(M,'File','Mfunc','Vars',{q_,dq_,tau});
