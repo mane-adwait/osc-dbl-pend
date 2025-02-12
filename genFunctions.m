@@ -158,6 +158,14 @@ matlabFunction(y_,'File','yfunc','Vars',{q_});
 matlabFunction(dy_,'File','dyfunc','Vars',{q_,dq_});
 matlabFunction(ddy_,'File','ddyfunc','Vars',{q_,dq_,ddq_});
 
+% Export the QP functions.
+matlabFunction(Q,'File','Qfunc','Vars',{q_,dq_,ddy_des});
+matlabFunction(c,'File','cfunc','Vars',{q_,dq_,ddy_des});
+% matlabFunction(A,'File','Afunc','Vars',{q_,dq_});
+% matlabFunction(b,'File','bfunc','Vars',{q_,dq_});
+matlabFunction(Aeq,'File','Aeqfunc','Vars',{q_,dq_});
+matlabFunction(beq,'File','beqfunc','Vars',{q_,dq_});
+
 % ------ APPENDIX -------
 % disp(['var = ' newline char([1 0] * var) newline char([0 1] * var)])
 
