@@ -15,6 +15,10 @@ x0 = [-pi/2; 0; 0.1; 0]; % Initial state.
 x0_current = x0;
 
 % Controller gains.
+Kp = 10; Kd = 1;
+
+% Desired position in the task space.
+y_des = [0.5; 0.5]; dy_des = [0; 0];
 
 % Initialize variables to store the time and state outputs.
 t_store = []; x_store = [];
