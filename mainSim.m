@@ -3,7 +3,7 @@
 
 clc; clear; close all;
 
-t_span = [0 5]; % Total duration (s).
+t_span = [0 0.1]; % Total duration (s).
 % Control timestep: At each control timestep, the state is sampled, 
 % the QP is run, and the control input is computed.
 dt = 0.01; % Control timestep (s).
@@ -45,6 +45,8 @@ for iter = 1:numel(t_vector)-1
         beqfunc(q,dq) ...
         );
     
+    tau = [w_star(1); w_star(2)];
+
     odefun = @(t,x) dynamics(t,x,tau);
 
     % Quadratic program: decision vector, cost function, constraints.
@@ -59,4 +61,4 @@ end
 
 plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
 
-% Resume video at 38:30.
+% Resume video at 1:06:30.
