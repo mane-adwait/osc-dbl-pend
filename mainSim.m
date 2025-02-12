@@ -37,6 +37,8 @@ for iter = 1:numel(t_vector)-1
     % at each loop iteration.
     odefun = @(t,x) dynamics(t,x,[0;0]);
 
+    % Quadratic program: decision vector, cost function, constraints.
+
     [tout, xout] = ode45(odefun, sim_t_span, x0_current) ;
     x0_current = xout(end,:).'; 
     
