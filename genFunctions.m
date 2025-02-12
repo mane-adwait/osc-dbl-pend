@@ -135,11 +135,18 @@ cost = ddy_des - ddy_ ; cost = sum(cost.^2); % Scalar cost.
 % Equality constraints.
 Ceq = M*ddq_-f;
 
-% Hessian.
+% Hessian for the quadratic term.
 Q = hessian(cost,w);
-% Gradient.
+% Gradient for the linear term.
 c = gradient(cost,w);
 c = subs(c,w,zeros(size(w)));
+
+% Constraint Jacobians.
+Aeq = jacobian(Ceq,w);
+beq = -subs(Ceq,w,zeros(size(w)));
+
+A = [];
+b = [];
 
 %% Export.
 % Export the dynamics functions.
