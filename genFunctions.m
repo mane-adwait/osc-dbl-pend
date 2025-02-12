@@ -135,6 +135,13 @@ cost = ddy_des - ddy_ ; cost = sum(cost.^2); % Scalar cost.
 % Equality constraints.
 Ceq = M*ddq_-f;
 
+% Hessian.
+Q = hessian(cost,w);
+% Gradient.
+c = gradient(cost,w);
+c = subs(c,w,zeros(size(w)));
+
+%% Export.
 % Export the dynamics functions.
 matlabFunction(M,'File','Mfunc','Vars',{q_,dq_,tau});
 matlabFunction(f,'File','ffunc','Vars',{q_,dq_,tau});
