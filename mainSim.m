@@ -27,7 +27,7 @@ for iter = 1:numel(t_vector)-1
     q = [x0_current(1); x0_current(3)]; dq = [x0_current(2); x0_current(4)];
 
     % Define the desired acceleration in the task space.
-    ddy_des = Kp*(y_des-yfunc(q)) + Kd(dy_des-dyfunc(q,dq));
+    ddy_des = Kp*(y_des-yfunc(q)) + Kd*(dy_des-dyfunc(q,dq));
     
     % We need to compute the control input and apply it to the dynamics 
     % at each loop iteration.
