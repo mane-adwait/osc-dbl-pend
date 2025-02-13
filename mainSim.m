@@ -3,7 +3,7 @@
 
 clc; clear; close all;
 
-t_span = [0 0.5]; % Total duration (s).
+t_span = [0 1]; % Total duration (s).
 % Control timestep: At each control timestep, the state is sampled, 
 % the QP is run, and the control input is computed.
 dt = 0.05; % Control timestep (s).
@@ -80,6 +80,19 @@ x_store_unique = x_store(:, idx);
 
 x_anim_col = interp1(t_store_unique.', x_store_unique.', t_anim.');
 x_anim = x_anim_col.';
+
+fig2 = figure; movegui(fig2,"north");
+for iter = 1:numel(t_anim)
+    cla; hold on;
+    th1 = x_anim(1,iter); th2 = x_anim(3,iter);
+    plot([0, cos(th1), cos(th1)+cos(th1+th2)], ...
+        [0, sin(th1), sin(th1)+sin(th1+th2)], ...
+        'k-', 'LineWidth',3 ...
+        )
+    axis equal; 
+    axis([-3 3 -3 3]);
+    drawnow
+end
 
 %%
 % Resume video at ??:??:??.
