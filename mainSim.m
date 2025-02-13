@@ -81,6 +81,12 @@ x_store_unique = x_store(:, idx);
 x_anim_col = interp1(t_store_unique.', x_store_unique.', t_anim.');
 x_anim = x_anim_col.';
 
+% Set up the video writer object.
+video_filename = 'animation.mp4';
+video_writer = VideoWriter(video_filename, 'MPEG-4');
+video_writer.FrameRate = FPS;
+open(video_writer);
+
 fig2 = figure; movegui(fig2,"north");
 for iter = 1:numel(t_anim)
     cla; hold on;
@@ -92,7 +98,16 @@ for iter = 1:numel(t_anim)
     axis equal; 
     axis([-3 3 -3 3]);
     drawnow
+
+    % Capture the frame and write it to the video writer object.
+    frame = getframe(fig2);
+    writeVideo(video_writer, frame);    
 end
 
+% Close the video writer object.
+close(video_writer);
+fprintf('Animation saved as %s\n', video_filename);
+
+
 %%
-% Resume video at ??:??:??.
+% Resume CH lecture video at 0:15:00.
