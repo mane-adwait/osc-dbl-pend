@@ -110,4 +110,4 @@ fprintf('Animation saved as %s\n', video_filename);
 
 
 %%
-% Resume CH lecture video at 0:15:00.
+% Resume CH lecture video at 1:15:00.
