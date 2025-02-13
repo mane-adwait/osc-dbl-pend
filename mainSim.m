@@ -51,8 +51,9 @@ for iter = 1:numel(t_vector)-1
 
     % Quadratic program: decision vector, cost function, constraints.
 
-    [tout, xout] = ode45(odefun, sim_t_span, x0_current) ;
-    x0_current = xout(end,:).'; 
+    [t_col, x_col] = ode45(odefun, sim_t_span, x0_current) ;
+    t_out = t_col.'; x_out = x_col.';
+    x0_current = xout(:,end).'; 
     
     % Append the results to the previous results.
     t_store = [t_store tout.'];
@@ -60,5 +61,11 @@ for iter = 1:numel(t_vector)-1
 end
 
 plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
+
+%% Animation
+
+fps = 20; % Frames per second.
+t_anim = t_span(1):1/fps:t_span(2);
+x_anim = interp1(tout,xout,t_anim)
 
 % Resume video at 1:06:30.
