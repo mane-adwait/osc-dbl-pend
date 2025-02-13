@@ -3,10 +3,10 @@
 
 clc; clear; close all;
 
-t_span = [0 1]; % Total duration (s).
+t_span = [0 0.5]; % Total duration (s).
 % Control timestep: At each control timestep, the state is sampled, 
 % the QP is run, and the control input is computed.
-dt = 0.1; % Control timestep (s).
+dt = 0.05; % Control timestep (s).
 % Control frequency = 1/dt (Hz).
 t_vector = t_span(1):dt:t_span(2);
 
@@ -68,9 +68,17 @@ plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
 
 %% Animation
 
-FPS = 20; % Frames per second.
+FPS = 40; % Frames per second.
 t_anim = t_span(1):1/FPS:t_span(2);
-x_anim_col = interp1(t_store.',x_store.',t_anim.'); 
+
+% interp1 requires the sample points (t_store) to be unique, but there are 
+% duplicate values in t_store. This often happens when ode45 outputs 
+% repeated time points due to adaptive time stepping.
+% The "unique" command gives the indices and values of the unique values.
+[t_store_unique, idx] = unique(t_store, 'stable'); 
+x_store_unique = x_store(:, idx);
+
+x_anim_col = interp1(t_store_unique.', x_store_unique.', t_anim.');
 x_anim = x_anim_col.';
 
 %%
