@@ -52,12 +52,15 @@ for iter = 1:numel(t_vector)-1
     % Quadratic program: decision vector, cost function, constraints.
 
     [t_col, x_col] = ode45(odefun, sim_t_span, x0_current) ;
-    t_out = t_col.'; x_out = x_col.';
-    x0_current = xout(:,end).'; 
+    % Time is the vertical axis by default in ode45 output, hence "_col" 
+    % in the variable names. I prefer time to be the horizontal axis, so I 
+    % take the transpose. 
+    t_out = t_col.'; x_out = x_col.'; 
+    x0_current = x_out(:,end); 
     
     % Append the results to the previous results.
-    t_store = [t_store tout.'];
-    x_store = [x_store xout.'];
+    t_store = [t_store t_out];
+    x_store = [x_store x_out];
 end
 
 plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
