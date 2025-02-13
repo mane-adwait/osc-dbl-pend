@@ -63,6 +63,7 @@ for iter = 1:numel(t_vector)-1
     x_store = [x_store x_out];
 end
 
+fig1 = figure; movegui(fig1,'northeast');
 plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
 
 %% Animation
