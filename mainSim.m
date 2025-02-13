@@ -3,10 +3,10 @@
 
 clc; clear; close all;
 
-t_span = [0 0.1]; % Total duration (s).
+t_span = [0 1]; % Total duration (s).
 % Control timestep: At each control timestep, the state is sampled, 
 % the QP is run, and the control input is computed.
-dt = 0.01; % Control timestep (s).
+dt = 0.1; % Control timestep (s).
 % Control frequency = 1/dt (Hz).
 t_vector = t_span(1):dt:t_span(2);
 
@@ -68,8 +68,10 @@ plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
 
 %% Animation
 
-fps = 20; % Frames per second.
-t_anim = t_span(1):1/fps:t_span(2);
-x_anim = interp1(tout,xout,t_anim)
+FPS = 20; % Frames per second.
+t_anim = t_span(1):1/FPS:t_span(2);
+x_anim_col = interp1(t_store.',x_store.',t_anim.'); 
+x_anim = x_anim_col.';
 
-% Resume video at 1:06:30.
+%%
+% Resume video at ??:??:??.
