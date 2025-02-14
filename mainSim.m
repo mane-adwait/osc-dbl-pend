@@ -3,7 +3,7 @@
 
 clc; clear; close all;
 
-t_span = [0 1]; % Total duration (s).
+t_span = [0 2]; % Total duration (s).
 % Control timestep: At each control timestep, the state is sampled, 
 % the QP is run, and the control input is computed.
 dt = 0.05; % Control timestep (s).
