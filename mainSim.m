@@ -18,8 +18,8 @@ x0_current = x0;
 Kp = 10; Kd = 5;
 
 % Desired position in the task space.
-% y_des = [-pi/2+pi/8; pi/4]; dy_des = [0; 0];
-y_des = [1; -1]; dy_des = [0; 0];
+y_des = [-pi/4; pi/4]; dy_des = [0; 0];
+% y_des = [1; -1]; dy_des = [0; 0];
 
 % Initialize variables to store the time and state outputs.
 t_store = []; x_store = [];
@@ -90,12 +90,16 @@ open(video_writer);
 
 fig2 = figure; movegui(fig2,"north");
 for iter = 1:numel(t_anim)-1
-    cla; hold on;
+    cla; hold on; grid on
     th1 = x_anim(1,iter); th2 = x_anim(3,iter);
     plot([0, cos(th1), cos(th1)+cos(th1+th2)], ...
         [0, sin(th1), sin(th1)+sin(th1+th2)], ...
         'k-', 'LineWidth',3 ...
-        )
+        ) % Measured position.
+    plot([0, cos(y_des(1,1)), cos(y_des(1,1))+cos(y_des(1,1)+y_des(2,1)) ], ...
+        [0, sin(y_des(1,1)), sin(y_des(1,1))+sin(y_des(1,1)+y_des(2,1)) ], ...
+        'b-', 'LineWidth',1 ...
+        ) % Desired position.
     axis equal; 
     axis([-3 3 -3 3]);
     drawnow
