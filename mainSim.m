@@ -15,7 +15,7 @@ x0 = [-pi/2; 0; 0.1; 0]; % Initial state.
 x0_current = x0;
 
 % Controller gains.
-Kp = 10; Kd = 1;
+Kp = 10; Kd = 5;
 
 % Desired position in the task space.
 % y_des = [-pi/2+pi/8; pi/4]; dy_des = [0; 0];
@@ -108,7 +108,3 @@ end
 % Close the video writer object.
 close(video_writer);
 fprintf('Animation saved as %s\n', video_filename);
-
-
-%%
-% Resume CH lecture video at 1:15:00.
