@@ -3,10 +3,10 @@
 
 clc; clear; close all;
 
-t_span = [0 2]; % Total duration (s).
+t_span = [0 4]; % Total duration (s).
 % Control timestep: At each control timestep, the state is sampled, 
 % the QP is run, and the control input is computed.
-dt = 0.05; % Control timestep (s).
+dt = 0.01; % Control timestep (s).
 % Control frequency = 1/dt (Hz).
 t_vector = t_span(1):dt:t_span(2);
 
@@ -18,7 +18,8 @@ x0_current = x0;
 Kp = 10; Kd = 1;
 
 % Desired position in the task space.
-y_des = [0.5; 0.5]; dy_des = [0; 0];
+% y_des = [-pi/2+pi/8; pi/4]; dy_des = [0; 0];
+y_des = [1; -1]; dy_des = [0; 0];
 
 % Initialize variables to store the time and state outputs.
 t_store = []; x_store = [];
@@ -68,7 +69,7 @@ plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
 
 %% Animation
 
-FPS = 40; % Frames per second.
+FPS = 100; % Frames per second.
 t_anim = t_span(1):1/FPS:t_span(2);
 
 % interp1 requires the sample points (t_store) to be unique, but there are 
@@ -88,7 +89,7 @@ video_writer.FrameRate = FPS;
 open(video_writer);
 
 fig2 = figure; movegui(fig2,"north");
-for iter = 1:numel(t_anim)
+for iter = 1:numel(t_anim)-1
     cla; hold on;
     th1 = x_anim(1,iter); th2 = x_anim(3,iter);
     plot([0, cos(th1), cos(th1)+cos(th1+th2)], ...
