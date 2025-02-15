@@ -131,6 +131,9 @@ f = -subs(EL_, ddq_, [0;0]);
 w = [tau; ddq_];
 
 % Cost function.
+% ddy_ is included as an algebraic expression in the cost. This makes it a
+% soft constraint. This is recommended over a hard constraint to avoid
+% infeasibility.
 ddy_des = sym('ddy_des',[2 1]);
 cost = ddy_des - ddy_ ; cost = sum(cost.^2); % Scalar cost.
 
