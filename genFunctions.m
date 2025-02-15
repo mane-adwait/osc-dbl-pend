@@ -126,8 +126,10 @@ M = jacobian(EL_,ddq_); % Inertia matrix.
 f = -subs(EL_, ddq_, [0;0]);
 
 %% Components for the optimization.
+
 % Decision vector.
 w = [tau; ddq_];
+
 % Cost function.
 ddy_des = sym('ddy_des',[2 1]);
 cost = ddy_des - ddy_ ; cost = sum(cost.^2); % Scalar cost.
