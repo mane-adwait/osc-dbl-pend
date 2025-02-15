@@ -141,6 +141,7 @@ cost = ddy_des - ddy_ ; cost = sum(cost.^2); % Scalar cost.
 Ceq = M*ddq_-f;
 
 % Hessian for the quadratic term.
+% A positive semi-definite Hessian is a sufficient condition for convexity.
 Q = hessian(cost,w);
 % Gradient for the linear term.
 c = gradient(cost,w);
