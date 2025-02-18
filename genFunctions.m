@@ -25,7 +25,7 @@ q = [th1; th2]; % Vector of generalized coordinates.
 dq = diff(q,t); % Velocities.
 ddq = diff(dq,t); % Accelerations.
 
-tau = [tau1; tau2]; % Vector of non-conservative forces.
+tau = [tau1; tau2]; % Vector of non-conservative input forces.
 
 % Forward kinematics to define the task space: position of the
 % end-effector.
