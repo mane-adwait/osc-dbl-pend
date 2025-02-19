@@ -30,9 +30,9 @@ ddq = diff(dq,t); % Accelerations.
 tau = [tau1; tau2]; % Vector of non-conservative input torques.
 
 % Forward kinematics to define the task space: position of the
-% end-effector.
+% end-effector. We also compute its time derivatives.
 y = [p.L1*cos(th1) + p.L2*cos(th1+th2); 
-    p.L1*sin(th1) + p.L2*sin(th1+th2)];
+    p.L1*sin(th1) + p.L2*sin(th1+th2)]; % Position.
 dy = diff(y,t); % Velocity.
 ddy = diff(dy,t); % Acceleration.
 
