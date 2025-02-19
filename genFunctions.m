@@ -15,10 +15,9 @@ clc; clear; close all;
 p = getParams(); % Retrieve the parameters.
 
 %% Lagrangian dynamics.
-% Generalized coordinates.
 
 syms t % Time.
-syms th1(t) th2(t) % Joint angles.
+syms th1(t) th2(t) % Use the joint angles as the generalized coordinates.
 syms tau1 tau2 % Input torques.
 
 q = [th1; th2]; % Vector of generalized coordinates.
