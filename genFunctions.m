@@ -12,7 +12,7 @@
 clc; clear; close all;
 
 % Generate our dynamics.
-p = getParams(); % Store the parameters.
+p = getParams(); % Retrieve the parameters.
 
 % Lagrangian dynamics.
 % Generalized coordinates.
