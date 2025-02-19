@@ -89,7 +89,8 @@ EL_temp = subs(EL_temp, diff(th2,t), dth2_);
 EL_temp = subs(EL_temp, th2, th2_);
 
 % EL_temp is still of type symfun, even though we removed the time
-% dependence of the terms via substitution. So we create EL_ below.
+% dependence of the terms via substitution. So we create EL_ below, which
+% is of type sym.
 EL_(1,1) = [1 0]*EL_temp; EL_(2,1) = [0 1]*EL_temp; 
 disp(['EL_ = ' newline char([1 0] * EL_) newline char([0 1] * EL_) newline])
 
