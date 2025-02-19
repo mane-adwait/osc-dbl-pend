@@ -80,13 +80,13 @@ ddq_ = [ddth1_; ddth2_];
 
 EL_temp = EL; % Create an 'intermediary' for the substitutions.
 
-EL_temp = subs(EL_temp, diff(th1,t,t), ddth1_);
-EL_temp = subs(EL_temp, diff(th1,t), dth1_);
 EL_temp = subs(EL_temp, th1, th1_);
+EL_temp = subs(EL_temp, diff(th1,t), dth1_);
+EL_temp = subs(EL_temp, diff(th1,t,t), ddth1_);
 
-EL_temp = subs(EL_temp, diff(th2,t,t), ddth2_);
-EL_temp = subs(EL_temp, diff(th2,t), dth2_);
 EL_temp = subs(EL_temp, th2, th2_);
+EL_temp = subs(EL_temp, diff(th2,t), dth2_);
+EL_temp = subs(EL_temp, diff(th2,t,t), ddth2_);
 
 % EL_temp is still of type symfun, even though we removed the time
 % dependence of the terms via substitution. So we create EL_ below, which
@@ -101,19 +101,19 @@ y_temp = subs(y_temp,th1,th1_);
 
 y_temp = subs(y_temp,th2,th2_);
 
-dy_temp = subs(dy_temp, diff(th1,t), dth1_);
 dy_temp = subs(dy_temp, th1, th1_);
+dy_temp = subs(dy_temp, diff(th1,t), dth1_);
 
-dy_temp = subs(dy_temp, diff(th2,t), dth2_);
 dy_temp = subs(dy_temp, th2, th2_);
+dy_temp = subs(dy_temp, diff(th2,t), dth2_);
 
-ddy_temp = subs(ddy_temp, diff(th1,t,t), ddth1_);
-ddy_temp = subs(ddy_temp, diff(th1,t), dth1_);
 ddy_temp = subs(ddy_temp, th1, th1_);
+ddy_temp = subs(ddy_temp, diff(th1,t), dth1_);
+ddy_temp = subs(ddy_temp, diff(th1,t,t), ddth1_);
 
-ddy_temp = subs(ddy_temp, diff(th2,t,t), ddth2_);
-ddy_temp = subs(ddy_temp, diff(th2,t), dth2_);
 ddy_temp = subs(ddy_temp, th2, th2_);
+ddy_temp = subs(ddy_temp, diff(th2,t), dth2_);
+ddy_temp = subs(ddy_temp, diff(th2,t,t), ddth2_);
 
 y_(1,1) = [1 0]*y_temp; y_(2,1) = [0 1]*y_temp;
 disp(['y_ = ' newline char([1 0]*y_) newline char([0 1]*y_) newline])
@@ -138,7 +138,8 @@ w = [tau; ddq_];
 % soft constraint. This is recommended over a hard constraint to avoid
 % infeasibility.
 ddy_des = sym('ddy_des',[2 1]);
-cost = ddy_des - ddy_ ; cost = sum(cost.^2); % Scalar cost.
+cost = ddy_des - ddy_ ; 
+cost = sum(cost.^2); % Compute the 2-norm to obtain a scalar cost.
 
 % Equality constraints.
 Ceq = M*ddq_-f;
