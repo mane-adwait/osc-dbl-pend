@@ -16,15 +16,18 @@ p = getParams(); % Retrieve the parameters.
 
 %% Lagrangian dynamics.
 
+% Declare symbolic variables.
 syms t % Time.
-syms th1(t) th2(t) % Use the joint angles as the generalized coordinates.
+% Use the joint angles as the generalized coordinates. We use symbolic
+% functions here so we can compute symbolic time derivatives.
+syms th1(t) th2(t) 
 syms tau1 tau2 % Input torques.
 
 q = [th1; th2]; % Vector of generalized coordinates.
 dq = diff(q,t); % Velocities.
 ddq = diff(dq,t); % Accelerations.
 
-tau = [tau1; tau2]; % Vector of non-conservative input forces.
+tau = [tau1; tau2]; % Vector of non-conservative input torques.
 
 % Forward kinematics to define the task space: position of the
 % end-effector.
