@@ -71,12 +71,12 @@ EL_RHS = B*tau;
 % Put everything on the LHS.
 EL = EL_LHS - EL_RHS;
 
-% Remove time dependence. Substitute symbolic functions with symbolic variables.
+% Remove the time dependence. Substitute symbolic functions with symbolic variables.
 syms th1_ th2_ dth1_ dth2_ ddth1_ ddth2_ q_ dq_ ddq_
 
-q_ = [th1_; th2_]
-dq_ = [dth1_; dth2_]
-ddq_ = [ddth1_; ddth2_]
+q_ = [th1_; th2_];
+dq_ = [dth1_; dth2_];
+ddq_ = [ddth1_; ddth2_];
 
 EL_temp = EL; % Create an 'intermediary' for the substitutions.
 
