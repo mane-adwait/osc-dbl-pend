@@ -14,7 +14,7 @@ clc; clear; close all;
 % Generate our dynamics.
 p = getParams(); % Retrieve the parameters.
 
-% Lagrangian dynamics.
+%% Lagrangian dynamics.
 % Generalized coordinates.
 
 syms t % Time.
