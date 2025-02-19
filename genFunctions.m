@@ -3,7 +3,7 @@
 
 % Generate the required functions for Operational Space Control (OSC) of a
 % double pendulum.
-% - Forward dynamics (M, f).
+% - Lagrangian forward dynamics (M, f).
 % - Task space kinematics and derivatives (y, dy, ddy, J, Jdot).
 % - Desired task-space acceleration (PD controller).
 % - Optimization: QP (Q, c, A, b, Aeq, beq)
@@ -14,7 +14,7 @@ clc; clear; close all;
 % Generate our dynamics.
 p = getParams(); % Retrieve the parameters.
 
-%% Lagrangian dynamics.
+%% Lagrangian dynamics and task space expressions.
 
 % Declare symbolic variables.
 syms t % Time.
