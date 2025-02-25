@@ -65,7 +65,7 @@ for iter = 1:numel(t_vector)-1
 end
 
 % Save data for plotting.
-save('data.mat');
+save("data.mat","t_store","x_store");
 
 fig1 = figure; movegui(fig1,'northeast');
 plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
