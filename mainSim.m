@@ -46,7 +46,7 @@ for iter = 1:numel(t_vector)-1
         beqfunc(q,dq) ...
         );
     
-    tau = [w_star(1); w_star(2)];
+    tau = [w_star(1); w_star(2)]; tau_store = [tau_store tau];
 
     odefun = @(t,x) dynamics(t,x,tau);
 
