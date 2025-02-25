@@ -114,3 +114,4 @@ close(video_writer);
 disp([newline 'Animation saved as ' video_filename ]);
 
 % Save data for plotting.
+save('data.mat');
