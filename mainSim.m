@@ -64,6 +64,9 @@ for iter = 1:numel(t_vector)-1
     x_store = [x_store x_out];
 end
 
+% Save data for plotting.
+save('data.mat');
+
 fig1 = figure; movegui(fig1,'northeast');
 plot(t_store,x_store(1,:)); xlabel('Time (s)'); ylabel('Angle (rad)');
 
@@ -112,6 +115,3 @@ end
 % Close the video writer object. This saves the file.
 close(video_writer);
 disp([newline 'Animation saved as ' video_filename ]);
-
-% Save data for plotting.
-save('data.mat');
