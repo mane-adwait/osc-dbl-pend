@@ -109,6 +109,6 @@ for iter = 1:numel(t_anim)-1
     writeVideo(video_writer, frame);    
 end
 
-% Close the video writer object.
+% Close the video writer object. This saves the file.
 close(video_writer);
-fprintf('Animation saved as %s\n', video_filename);
+disp([newline 'Animation saved as ' video_filename ]);
