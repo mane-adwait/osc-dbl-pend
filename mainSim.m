@@ -22,7 +22,7 @@ y_des = [-pi/4; pi/4]; dy_des = [0; 0];
 % y_des = [1; -1]; dy_des = [0; 0];
 
 % Initialize variables to store the time, state, and control signal values.
-t_store = []; x_store = [];
+t_store = []; x_store = []; tau_store = [];
 
 % Simulation loop.
 for iter = 1:numel(t_vector)-1
