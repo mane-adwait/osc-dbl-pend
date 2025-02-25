@@ -15,7 +15,7 @@ x0 = [-pi/2; 0; 0.1; 0]; % Initial state.
 x0_current = x0;
 
 % Controller gains.
-Kp = 10; Kd = 5;
+Kp = 100; Kd = 5;
 
 % Desired position in the task space.
 y_des = [-pi/4; pi/4]; dy_des = [0; 0];
