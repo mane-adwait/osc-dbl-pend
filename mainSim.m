@@ -1,5 +1,6 @@
 % mainSim.m
 % Simulate the controlled system.
+% Adwait Mane, 2025 January
 
 clc; clear; close all;
 
