@@ -21,7 +21,7 @@ Kp = 10; Kd = 5;
 y_des = [-pi/4; pi/4]; dy_des = [0; 0];
 % y_des = [1; -1]; dy_des = [0; 0];
 
-% Initialize variables to store the time and state outputs.
+% Initialize variables to store the time, state, and control signal values.
 t_store = []; x_store = [];
 
 % Simulation loop.
