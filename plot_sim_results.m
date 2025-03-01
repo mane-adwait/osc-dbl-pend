@@ -47,3 +47,7 @@ for im = 1:draw.m
         numPlots = 2; % Select the number of plots on each subplot.
 
         subplot(draw.m,draw.n,im); % Select the subplot axes.
+        % Note: update the last argument if plotting more than one column.
+
+        % Set the axes properties
+        cAx = gca;
