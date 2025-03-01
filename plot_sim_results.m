@@ -38,3 +38,7 @@ cFig.Color = 'white'; % I think the 'no background' option appears black in
 % -------------------------------------------------------------------------
 
 draw.m = 2; draw.n = 1; % Select the subplot grid size.
+
+%% Set the axes properties.
+
+for im = 1:draw.m
