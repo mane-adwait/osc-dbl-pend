@@ -51,3 +51,4 @@ for im = 1:draw.m
 
         % Set the axes properties
         cAx = gca;
+        lineColors = linspecer(numPlots);
