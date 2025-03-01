@@ -45,3 +45,5 @@ for im = 1:draw.m
     for in = 1:draw.n
 
         numPlots = 2; % Select the number of plots on each subplot.
+
+        subplot(draw.m,draw.n,im); % Select the subplot axes.
