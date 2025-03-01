@@ -43,3 +43,5 @@ draw.m = 2; draw.n = 1; % Select the subplot grid size.
 
 for im = 1:draw.m
     for in = 1:draw.n
+
+        numPlots = 2; % Select the number of plots on each subplot.
