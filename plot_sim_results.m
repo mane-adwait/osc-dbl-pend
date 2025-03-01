@@ -22,3 +22,19 @@ cFig.Units = 'normalized'; cFig.OuterPosition = [0.5 0.5 0.5 0.5];
 cFig.Color = 'white'; % I think the 'no background' option appears black in
 % the Matlab environment, but not when exported. The white background can be
 % removed in Inkscape.
+
+
+% Create the axes
+
+% -------------------------------------------------------------------------
+% ax1_fig5 = axes; % Create a single axes object for the figure.
+
+% subplot(m,n,p) creates an m-by-n grid. p=1 is first column of the first
+% row. p=2 is the second column of the first row, and so on.
+%   1   2
+%   3   4
+%   5   6 ...
+
+% -------------------------------------------------------------------------
+
+draw.m = 2; draw.n = 1; % Select the subplot grid size.
