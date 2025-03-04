@@ -60,3 +60,5 @@ for im = 1:draw.m
 end
 
 %% Plot the states on subplots.
+
+subplot(draw.m,draw.n,1); 
