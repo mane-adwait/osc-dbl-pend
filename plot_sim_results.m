@@ -57,4 +57,6 @@ for im = 1:draw.m
         hold on;
 
     end
-end    
+end
+
+%% Plot the states on subplots.
