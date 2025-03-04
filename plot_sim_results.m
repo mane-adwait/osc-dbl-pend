@@ -62,3 +62,5 @@ end
 %% Plot the states on subplots.
 
 subplot(draw.m,draw.n,1); 
+% This title appears bold. Subplot titles can be added after the plot
+% command.
