@@ -54,4 +54,6 @@ for im = 1:draw.m
         lineColors = linspecer(numPlots);
         axis on; cAx.TickLabelInterpreter = 'latex';
         cAx.ColorOrder = lineColors; cAx.FontSize = 20;
-        hold on;        
+        hold on;
+
+    end        
