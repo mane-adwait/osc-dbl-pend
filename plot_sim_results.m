@@ -64,3 +64,5 @@ end
 subplot(draw.m,draw.n,1); 
 % This title appears bold. Subplot titles can be added after the plot
 % command.
+% title(['States (', fileName, ' ', fileVersion, ')'], ...
+%     'Interpreter','latex','FontSize',18);
