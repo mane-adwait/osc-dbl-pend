@@ -80,3 +80,4 @@ subplot(draw.m,draw.n,2);
 
 plot(   t, z(3:4,:), ...
     'LineWidth', 1.5); grid on;
+ylabel('rad/s','Interpreter','latex','FontSize',20);
