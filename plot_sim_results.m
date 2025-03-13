@@ -90,3 +90,5 @@ xlabel('Time (s)', 'Interpreter','latex','FontSize',20);
 %% Plot the control signal in a separate figure.
 
 figure(10); cFig = gcf; movegui(cFig,'northwest');
+
+% Set the axes properties
