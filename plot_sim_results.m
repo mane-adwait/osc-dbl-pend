@@ -94,3 +94,4 @@ figure(10); cFig = gcf; movegui(cFig,'northwest');
 % Set the axes properties
 cAx = gca;
 lineColors = linspecer(numPlots);
+axis on; 
