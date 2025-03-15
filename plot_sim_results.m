@@ -92,3 +92,4 @@ xlabel('Time (s)', 'Interpreter','latex','FontSize',20);
 figure(10); cFig = gcf; movegui(cFig,'northwest');
 
 % Set the axes properties
+cAx = gca;
