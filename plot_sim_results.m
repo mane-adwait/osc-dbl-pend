@@ -95,4 +95,4 @@ figure(10); cFig = gcf; movegui(cFig,'northwest');
 cAx = gca;
 lineColors = linspecer(numPlots);
 axis on; cAx.TickLabelInterpreter = 'latex';
-cAx.ColorOrder = lineColors; 
+cAx.ColorOrder = lineColors; cAx.FontSize = 20;
