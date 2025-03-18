@@ -100,3 +100,4 @@ cAx.ColorOrder = lineColors; cAx.FontSize = 20;
 hold on;
 
 plot(t,u, 'LineWidth', 1.5); legend('u1','u2'); grid on;
+xlabel('Time (s)', 'Interpreter','latex','FontSize',20);
