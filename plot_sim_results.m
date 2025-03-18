@@ -1,6 +1,7 @@
 % Plot the results from the simulation.
 % Adwait Mane, 2025 February 25.
 
+addpath("linspecer")
 load("data.mat")
 
 %% Generate plots.
