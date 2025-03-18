@@ -97,3 +97,5 @@ lineColors = linspecer(numPlots);
 axis on; cAx.TickLabelInterpreter = 'latex';
 cAx.ColorOrder = lineColors; cAx.FontSize = 20;
 hold on;
+
+plot(t,u, 'LineWidth', 1.5); 
