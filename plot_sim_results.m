@@ -98,4 +98,4 @@ axis on; cAx.TickLabelInterpreter = 'latex';
 cAx.ColorOrder = lineColors; cAx.FontSize = 20;
 hold on;
 
-plot(t,u, 'LineWidth', 1.5); 
+plot(t,u, 'LineWidth', 1.5); legend('u1','u2'); 
